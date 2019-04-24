@@ -25,3 +25,5 @@ string Guesser::guess() {
     }*/
     return ans;
     }
+    void Guesser::startNewGame(uint length){}
+    void Guesser::learn(string reply){}

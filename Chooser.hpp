@@ -8,7 +8,7 @@ class Chooser{
     private:
    // uint length;
     public:
-   virtual string choose(uint lentgh);
+   virtual string choose(uint lentgh)=0;
   
 };
-};
+}
