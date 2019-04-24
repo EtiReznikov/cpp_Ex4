@@ -19,7 +19,7 @@
           throw "wrong input";
           */
        ans = to_string(guess);
-      // this->length= ans.length;
+       this->length= ans.length;
     }
     catch (exception &e)
     {

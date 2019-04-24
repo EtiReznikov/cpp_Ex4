@@ -8,8 +8,9 @@ namespace bullpgia {
 class Guesser
 {
   private:
-      uint length;
+      
   public:
+  uint length;
     void startNewGame(uint length);
     virtual string guess();
     void learn(string reply);

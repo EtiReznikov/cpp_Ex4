@@ -19,4 +19,9 @@ auto calculate::calculateBullAndPgia(string choice, string guess)
             bull++;
         }
     }
+
+    string strpgia=std::to_string(pgia);
+    string strbull=std::to_string(bull);
+
+    return strbull+","+strpgia;
 }
