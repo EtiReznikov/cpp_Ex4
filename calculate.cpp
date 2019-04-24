@@ -24,5 +24,7 @@ string calculateBullAndPgia(string choice, string guess)
     string strpgia=std::to_string(pgia);
     string strbull=std::to_string(bull);
 
-    return strbull+","+strpgia;
+    string ans=bull+","+pgia;
+
+    return ans;
 }
