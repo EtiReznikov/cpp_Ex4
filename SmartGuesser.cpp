@@ -10,3 +10,7 @@ using namespace bullpgia;
         {
 
         }
+        string SmartGuesser::guess()
+        {
+            return "";
+        }

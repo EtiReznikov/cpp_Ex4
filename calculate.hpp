@@ -2,6 +2,6 @@
 #include <string>
 using std::string;
 using namespace std;
-namespace bullpgia {
+//namespace bullpgia {
 string calculateBullAndPgia(string choice, string guess);
-}
+//}

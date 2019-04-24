@@ -1,5 +1,5 @@
 #include "calculate.hpp"
-using namespace bullpgia;
+//using namespace bullpgia;
 
 string calculateBullAndPgia(string choice, string guess)
 {
