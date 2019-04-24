@@ -1,7 +1,14 @@
 #pragma once
 #include <string>
+#include <iostream>
+using namespace std;
 using std::string;
+namespace bullpgia {
 class Chooser{
-    
-    string choose(uint lentgh);
+    private:
+   // uint length;
+    public:
+   virtual string choose(uint lentgh);
+  
+};
 };
