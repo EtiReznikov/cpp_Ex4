@@ -1,9 +1,9 @@
 
 #include "Guesser.hpp"
 using std::string;
+using namespace bullpgia;
 
-
-string bullpgia::Guesser::guess() {
+string Guesser::guess() {
        int guess;
        string ans=NULL;
      cout << " Enter your guess ";

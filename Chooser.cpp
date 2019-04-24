@@ -1,6 +1,6 @@
 #include "Chooser.hpp"
-
-string bullpgia::Chooser::choose(uint lentgh)
+using namespace bullpgia;
+string Chooser::choose(uint lentgh)
 {
 int choice;
 string ans=NULL;

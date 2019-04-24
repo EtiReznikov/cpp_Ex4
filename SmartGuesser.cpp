@@ -1,12 +1,12 @@
 
 #include "SmartGuesser.hpp"
-
-     void startNewGame(uint length) 
+using namespace bullpgia;
+     void SmartGuesser::startNewGame(uint length) 
      {
 
      }
  
-        void learn(string reply) 
+        void SmartGuesser::learn(string reply) 
         {
 
         }

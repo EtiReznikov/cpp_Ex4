@@ -1,6 +1,7 @@
 #include "calculate.hpp"
+using namespace bullpgia;
 
-string bullpgia::calculateBullAndPgia(string choice, string guess)
+string calculateBullAndPgia(string choice, string guess)
 {
     int bull=0, pgia=0;
     for (int i = 0; i < choice.length(); i++)
