@@ -1,6 +1,6 @@
 #include "calculate.hpp"
 
-auto calculate::calculateBullAndPgia(string choice, string guess)
+string bullpgia::calculateBullAndPgia(string choice, string guess)
 {
     int bull, pgia;
     for (int i = 0; i < choice.length; i++)

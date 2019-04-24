@@ -1,5 +1,5 @@
 #include <string>
 using std::string;
-class calculate{
-auto calculateBullAndPgia(string choice, string guess);
+namespace bullpgia {
+string calculateBullAndPgia(string choice, string guess);
 };
