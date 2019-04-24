@@ -1,9 +1,10 @@
 #include "Guesser.hpp"
 
-   void bullpgia::Guesser::startNewGame(uint length)
+  /* void bullpgia::Guesser::startNewGame(uint length)
    {
     this->length=length;
    }
+   */
     string bullpgia::Guesser::guess()
     {
        int guess;
@@ -27,7 +28,8 @@
     }
     return ans;
     }
-    void bullpgia::Guesser::learn(string reply)
+ /*   void bullpgia::Guesser::learn(string reply)
     {
 
     }
+    */

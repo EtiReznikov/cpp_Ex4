@@ -2,18 +2,18 @@
 
 string bullpgia::calculateBullAndPgia(string choice, string guess)
 {
-    int bull, pgia;
-    for (int i = 0; i < choice.length; i++)
+    int bull=0, pgia=0;
+    for (int i = 0; i < choice.length(); i++)
     {
-        for (int j = 0; j < guess.length; j++)
+        for (int j = 0; j < guess.length(); j++)
         {
             if (choice[i] == guess[j])
                 pgia++;
         }
     }
-    for (int i = 0; i < choice.length; i++)
+    for (int k = 0; k < choice.length(); k++)
     {
-        if (choice[i] == guess[i])
+        if (choice[k] == guess[k])
         {
             pgia--;
             bull++;

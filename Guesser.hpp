@@ -11,8 +11,8 @@ class Guesser
       
   public:
   uint length;
-    void startNewGame(uint length);
+    virtual void startNewGame(uint length);
     virtual string guess();
-    void learn(string reply);
+   virtual void learn(string reply);
 };
 };
