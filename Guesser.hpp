@@ -12,7 +12,7 @@ class Guesser
   public:
   uint length;
     virtual void startNewGame(uint length);
-      string bullpgia::Guesser::guess()
+      virtual string guess()
     {
        int guess;
        string ans=NULL;
@@ -27,7 +27,7 @@ class Guesser
           throw "wrong input";
           */
        ans = to_string(guess);
-       this->length= ans.length;
+       this->length= ans.length();
     //}
    /* catch (exception &e)
     {
