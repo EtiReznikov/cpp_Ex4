@@ -2,6 +2,7 @@
 #pragma once
 #include <string>
 #include <iostream>
+#include "calculate.hpp"
 using namespace std;
 using std::string;
 namespace bullpgia {
