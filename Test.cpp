@@ -48,6 +48,16 @@ int main() {
 		for (uint i=0; i<100; ++i) {
 			testcase.CHECK_EQUAL(play(randy, smarty, 4, 100)<=10, true);  // smarty should always win in at most 10 turns!
 		}
+//My tests:
+	testcase.setname("My Calculate bull and pgia")
+		.CHECK_OUTPUT(calculateBullAndPgia("3516","3516"), "4,0")      // 4 bull, 0 pgia
+		.CHECK_OUTPUT(calculateBullAndPgia("3516","4321"), "0,4")      // 0 bull, 4 pgia
+		.CHECK_OUTPUT(calculateBullAndPgia("3516","4321"), "0,4")      // 0 bull, 4 pgia
+		.CHECK_OUTPUT(calculateBullAndPgia("3516","4321"), "0,4")      // 0 bull, 4 pgia
+		.CHECK_OUTPUT(calculateBullAndPgia("3516","4321"), "0,4")      // 0 bull, 4 pgia
+
+		;
+
 
     grade = testcase.grade();
 	} else {
