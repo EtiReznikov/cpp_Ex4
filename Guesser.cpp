@@ -10,12 +10,6 @@ string Guesser::guess() {
       cin >> guess;
     try
     {
-      /*  int Guesslength = 1;
-        while ( guess /= 10 )
-           Guesslength++;
-        if (Guesslength!=lentgh)
-          throw "wrong input";
-          */
        ans = to_string(guess);
        this->length= ans.length();
     }
@@ -26,5 +20,5 @@ string Guesser::guess() {
     return ans;
     }
 }
-    void Guesser::startNewGame(uint length){}
-    void Guesser::learn(string reply){}
+  //  void Guesser::startNewGame(uint length){}
+  //  void Guesser::learn(string reply){}
