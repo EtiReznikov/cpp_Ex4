@@ -8,12 +8,6 @@ string ans=NULL;
   cin >> choice;
     try
     {
-      /*  int Guesslength = 1;
-        while ( guess /= 10 )
-           Guesslength++;
-        if (Guesslength!=lentgh)
-          throw "wrong input";
-          */
        ans = to_string(choice);
  
     }

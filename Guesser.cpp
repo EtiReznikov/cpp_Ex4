@@ -16,7 +16,6 @@ string Guesser::guess() {
     catch (exception &e)
     {
       cout << " wrong input! ";
-    
     return ans;
     }
 }
