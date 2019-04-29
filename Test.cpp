@@ -50,13 +50,7 @@ int main() {
 		}
 //My tests:
 
-	testcase.setname("Throws")
-	Guesser guess;
-	Chooser choose;
-
-	 .CHECK_THROWS()
-
-	testcase.setname("My Calculate bull and pgia")
+	testcase.setname("My- Calculate bull and pgia")
 	  .CHECK_OUTPUT(calculateBullAndPgia("9106","1111"), "1,0")      // 1 bull, 0 pgia
 		.CHECK_OUTPUT(calculateBullAndPgia("9106","1000"), "1,1")      // 1 bull, 1 pgia
 		.CHECK_OUTPUT(calculateBullAndPgia("9106","1022"), "0,1")      // 0 bull, 1 pgia
@@ -130,12 +124,27 @@ int main() {
 		}
 		;
 
-		testcase.setname("My Play with dummy choosers and guessers")
-		.CHECK_EQUAL(play(c1234, g1234, 4, 100), 1)      // guesser wins in one turn.
-		.CHECK_EQUAL(play(c1234, g9999, 4, 100), 101)    // guesser loses by running out of turns 
-		.CHECK_EQUAL(play(c1234, g12345, 4, 100), 101)   // guesser loses technically by making an illegal guess (too long).
-		.CHECK_EQUAL(play(c12345, g1234, 4, 100), 0)     // chooser loses technically by choosing an illegal number (too long).
+		ConstantChooser c9106{"9106"}, c1000{"1000"}, c123{"123"}, c1111{"1111"};
+		ConstantGuesser g9106{"9106"}, g0000{"0000"}, g1111{"1111"}, g123{"123"};
+
+
+	
+		testcase.setname("My- Play with dummy choosers and guessers")
+		.CHECK_EQUAL(play(c9106, g9106, 4, 100), 1)      // guesser wins in one turn.
+		.CHECK_EQUAL(play(c1000, g0000, 4, 100), 101)    // guesser loses by running out of turns 
+		.CHECK_EQUAL(play(c123, g1111, 3, 100), 101)   // guesser loses technically by making an illegal guess (too long).
+		.CHECK_EQUAL(play(c1111, g123, 3, 100), 0)     // chooser loses technically by choosing an illegal number (too long).
+		.CHECK_EQUAL(play(c123, g123, 3, 100), 1)      // guesser wins in one turn.
+		.CHECK_EQUAL(play(c123, g9106, 3, 100), 101)   // guesser loses technically by making an illegal guess (too long).
+		.CHECK_EQUAL(play(c9106, g123, 3, 100), 0)     // chooser loses technically by choosing an illegal number (too long).
 		;
+
+		testcase.setname("My- Play with smart guesser");
+		RandomChooser randy;
+		SmartGuesser smarty;
+		for (uint i=0; i<1000; ++i) {
+			testcase.CHECK_EQUAL(play(randy, smarty, 4, 100)<=100, true);  // smarty should always win in at most 10 turns!
+		}
 
     grade = testcase.grade();
 	} else {
