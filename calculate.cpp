@@ -25,32 +25,39 @@ choiceindex[k]=false;
    int i=0, j=0;
    while (i<choice.length())
    {
-       if (!guessindex[i] && !choiceindex[i]){
-       if (choice[i]==guess[j])
+       if (!guessindex[i] && !choiceindex[j])
        {
+        if (choice[i]==guess[j])
+        {
            if (i!=j )
-           {
-            pgia++;
-             guessindex[i]=true;
-           choiceindex[i]=true;
-            i++;
-            j=0;
-           }
-       }
-       else
-       {
+            {
+                pgia++;
+                guessindex[i]=true;
+            choiceindex[i]=true;
+                i++;
+                j=0;
+            }
+        }
+        else
+        {
            j++;
-       }
-       if (j=choice.length())
-       {
+        }
+        if (j=choice.length())
+        {
            i++;
            j=0;
-       }
+        }
        }
        else
        {
-           i++;
-           j=0;
+           if (guessindex[i]) 
+           {
+               i++;
+               j=0;
+           }
+           else if (choiceindex[j])j++;
+           
+           
        }
        
    }
