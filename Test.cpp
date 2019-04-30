@@ -77,8 +77,8 @@ int main() {
     .CHECK_OUTPUT(calculateBullAndPgia("371","317"), "1,2")      // 1 bull, 2 pgia
     .CHECK_OUTPUT(calculateBullAndPgia("371","242"), "0,0")      // 0 bull, 0 pgia
 
-
-
+;
+/*
     for (int i=0; i<10; ++i)
 		{
 			for (int j=0; j<10; ++j)
@@ -123,7 +123,7 @@ int main() {
 			}
 		}
 		;
-
+*/
 		ConstantChooser c9106{"9106"}, c1000{"1000"}, c123{"123"}, c1111{"1111"};
 		ConstantGuesser g9106{"9106"}, g0000{"0000"}, g1111{"1111"}, g123{"123"};
 
