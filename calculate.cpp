@@ -5,8 +5,13 @@ string calculateBullAndPgia(string choice, string guess)
 {
     int bull=0, pgia=0;
     bool bullindex[choice.length()];
+    bool pgiaindex[choice.length()];
     for (int k=0; k<choice.length(); k++)
+    {
         bullindex[k]=false;
+        pgiaindex[k]=false;
+    }
+        
 
    for (int k=0; k<choice.length(); k++)
    {
@@ -19,12 +24,13 @@ string calculateBullAndPgia(string choice, string guess)
    int i=0, j=0;
    while (i<choice.length())
    {
-       if (!bullindex[i]){
+       if (!bullindex[i] && !pgiaindex[i]){
        if (choice[i]==guess[j])
        {
            if (i!=j )
            {
             pgia++;
+            pgiaindex[i]=false;
             i++;
             j=0;
            }
