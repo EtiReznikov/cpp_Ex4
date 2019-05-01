@@ -33,7 +33,7 @@ choiceindex[k]=false;
             {
                 pgia++;
                 guessindex[i]=true;
-            choiceindex[i]=true;
+            choiceindex[j]=true;
                 i++;
                 j=0;
             }
@@ -42,7 +42,7 @@ choiceindex[k]=false;
         {
            j++;
         }
-        if (j=choice.length())
+        if (j==choice.length())
         {
            i++;
            j=0;
@@ -56,6 +56,11 @@ choiceindex[k]=false;
                j=0;
            }
            else if (choiceindex[j])j++;
+            if (j==choice.length())
+        {
+           i++;
+           j=0;
+        }
            
            
        }
