@@ -12,10 +12,12 @@ using std::string;
 
 namespace bullpgia {
 	uint play(Chooser& chooser, Guesser& guesser, uint length, uint maxTurns) {
+		 
 		const uint TECHNICAL_VICTORY_TO_GUESSER = 0;
 		const uint TECHNICAL_VICTORY_TO_CHOOSER = maxTurns+1;
 
 		string choice = chooser.choose(length);
+		cout<<"string to guess: "<<choice<< "\n";
 		if (choice.length()!=length)       // Illegal choice
 			return TECHNICAL_VICTORY_TO_GUESSER;
 		guesser.startNewGame(length);  // tell the guesser that a new game starts now
@@ -25,6 +27,7 @@ namespace bullpgia {
 			if (guess.length()!=length)  // Illegal guess
 				return TECHNICAL_VICTORY_TO_CHOOSER;
 			if (guess==choice) {
+				cout<<"num of turns:"<<indexOfTurn+1<<"\n";
 				return indexOfTurn + 1; 
 			} else {
 				auto reply = calculateBullAndPgia(choice, guess);
