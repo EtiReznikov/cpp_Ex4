@@ -1,7 +1,6 @@
 #pragma once
 #include "Guesser.hpp"
 #include <string>
-#include "calculate.hpp"
 using std::string;
 using namespace std;
 #include <queue>  
