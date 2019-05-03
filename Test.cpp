@@ -188,7 +188,7 @@ int main() {
 	//	ConstantChooser c9106{"6710"};
 		SmartGuesser smarty1;
 		for (uint i=0; i<10; ++i) {
-			testcase.CHECK_EQUAL(play(randy1, smarty1, 10, 100)<=100, true);  // smarty should always win in at most 10 turns!
+			testcase.CHECK_EQUAL(play(randy1, smarty1, 4, 100)<=100, true);  // smarty should always win in at most 10 turns!
 		}
 			
 

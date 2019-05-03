@@ -43,7 +43,7 @@ string SmartGuesser::guess()
             {
                  k=48+rand()%10;
             }
-          //  cout<<"k: "<<(char)k<<"\n";
+        //    cout<<"k: "<<(char)k<<"\n";
                
             dig[k-48]=true;
             indforpgia++;
@@ -101,9 +101,12 @@ string SmartGuesser::guess()
                 this->lastanswer.at(this->currentindex) = previous;
                 currentindex++;
                 bull++;
+             //   pgiaqueue.push(change);
+
               
             }
-              pgiaqueue.push(change);
+           if (pgia>0)
+             pgiaqueue.push(change);
 
         }
 
