@@ -8,32 +8,26 @@ using namespace std;
 
 namespace bullpgia{
 
- 
   class SmartGuesser : public bullpgia::Guesser{
 
-private:
-
-int numofguess=0;
-
-
 protected:
- uint  bull, pgia,lastbull, lastpgia;
-  int change, previous; //currentchar_firstcheck;
-  int num_of_check_digits;
- bool dig[10]={false};
- int k;
+  uint  bull, pgia; //nums of pgia and bull in this try
+  uint lastbull, lastpgia; //nums of pgia and bull in last try
+  int change; //the new digit
+  int previous; //the digit we exchanged
+  int num_of_check_digits; //num od digit we checked
+  bool checked_digits[10] = {false}; //An array representing the digits that checked
+  int digit; //digit we check
 
-queue<int> pgiaqueue;
- bool first_digit_change;
-string lastanswer;
+  queue<int> pgiaqueue; //A queue of possible digits
+  bool first_queue_use; //boolean that represents the first use in the queue
+  string lastanswer; //last answer that quess
 
+  int currentindex; //current index in the string that checked
 
- int currentindex;
-
-      public:
-      
-       void startNewGame(uint length) override;
-       string guess() override;
-        void learn(string reply) override;
+public:
+  void startNewGame(uint length) override;
+  string guess() override;
+  void learn(string reply) override;
 };
 }

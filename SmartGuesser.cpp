@@ -3,65 +3,64 @@
 #include <random>
 #include <iostream>
 using namespace bullpgia;
+//Initializes all the variables to a new game
 void SmartGuesser::startNewGame(uint length)
 {
     this->length = length;
-    this->bull = 0, this->pgia = 0, this->lastbull = length, this->lastpgia = 0;
-    this->currentindex = 0, this->change = 0, this->previous = 0; //this->currentchar_firstcheck = 47;
-    this->num_of_check_digits=0;
-    this->lastanswer = "";
-    this->k=48;
-  /*  for (int i = 0; i < length; i++)
+    bull = 0, pgia = 0, lastbull = 0, lastpgia = 0;
+    currentindex = 0, change = 0, previous = 0, digit=48;
+    num_of_check_digits=0;
+    lastanswer = "";
+    
+    for (int i = 0; i < length; i++)
         lastanswer += '0';
-        */
-    for (int i = 0; i < length/2; i++)
-        lastanswer += '1';
-    for (int i = length/2; i < length; i++)
-        lastanswer += '2';
     pgiaqueue = queue<int>();
     for (int i=0; i<10; i++)
-    dig[i]=false;
-    this->first_digit_change=true;
+    checked_digits[i]=false;
+    first_queue_use=true;
 }
-
+//Updating the variables-bull and pgia, according to the last guess
 void SmartGuesser::learn(string reply)
 {
     int separator = reply.find(",");
     this->bull = stoi(reply.substr(0, separator));
     this->pgia = stoi(reply.substr(separator + 1, reply.length() - 1));
 }
+
 string SmartGuesser::guess()
 {
-    
+    //If not all digits have been tchecked
     if (num_of_check_digits<10){
-        
+        //if there was bull at last guees add this digit to queue as ASCII num
          if (bull > 0)
         {
             for (int i = 0; i < bull; i++)
-                pgiaqueue.push(k);
+                pgiaqueue.push(digit+48);
               
         }
-      //  cout<<"qeueu size"<<pgiaqueue.size()<<"\n";
+        // If not all possible digits in the queue
          if (pgiaqueue.size() < this->length)
         {
-             k=48+rand()%10;
-            while(dig[k-48])
+            //rand a digit between 0 to 9
+             digit=rand()%10;
+             //while that digit has checked, rand new number
+            while(checked_digits[digit])
             {
-                 k=48+rand()%10;
-            }
-        //    cout<<"k: "<<(char)k<<"\n";
-               
-            dig[k-48]=true;
+                 digit=rand()%10;
+            }     
+            //Mark the number as checked, and increased the number of digits that checked
+            checked_digits[digit]=true;
             num_of_check_digits++;
-        //    cout<<"index: "<<indforpgia<<"\n";
+            //If the last test is not the last digit, make the answer to "kk...k"
             if (num_of_check_digits <=10){
                 for (int i = 0; i < length; i++)
                 {
-                    this->lastanswer.at(i) = k;
+                    this->lastanswer.at(i) = (char)(digit+48);
                 }
 
             }
         }
+        //There is no need to check more digits
         else
             num_of_check_digits = 11;
     }
@@ -93,37 +92,43 @@ string SmartGuesser::guess()
 
     else
     {
+        //If this is not the first use in the queue
 
-        if (!first_digit_change)
-        //cout<<"test\n";
+        if (!first_queue_use)
+        
         {
+
+            //If the num of bull is bigger than it was at last guess, move to next index
             if (bull > lastbull)
             {
                 currentindex++;
             }
 
+             //If the num of bull is smaller than it was at last guess,return the digit that was at the last guess,
+             // move to next index and increase the num of bull by one
             else if (bull < lastbull)
             {
                 this->lastanswer.at(this->currentindex) = previous;
                 currentindex++;
                 bull++;
-             //   pgiaqueue.push(change);
-            
-
             }
+            //If at this try there is at least 1 pgia, return this digit to queue
              if (pgia>0)
              pgiaqueue.push(change);
-            
-
         }
 
+        //If current index is less than the length of the string
         if (currentindex < length)
         {
-            first_digit_change = false;
+            first_queue_use = false;
+            //Check to avoid exception - the queue is not empty
             if (!pgiaqueue.empty())
             {
+                //save the first digit in queue at -change and pop it.
                 change = pgiaqueue.front();
                 pgiaqueue.pop();
+                //If the change digit is equal to the digit in the index we are checking,
+                // insert it back and take the next digit in the queue
                 while (change == lastanswer.at(currentindex))
                 {
                     pgiaqueue.push(change);
@@ -131,12 +136,17 @@ string SmartGuesser::guess()
                     pgiaqueue.pop();
                 }
             }
+
+            //save the last digit that replaced
             previous = this->lastanswer.at(this->currentindex);
+            //change the answer
             this->lastanswer.at(this->currentindex) = (char)(change);
         }
     }
 
+    //save this try num of bull and pgia
     this->lastbull = this->bull;
     this->lastpgia = this->pgia;
+    //return the new guess
     return lastanswer;
 }

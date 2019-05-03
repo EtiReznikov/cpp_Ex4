@@ -5,15 +5,15 @@
 #include "calculate.hpp"
 using namespace std;
 using std::string;
-namespace bullpgia {
+namespace bullpgia
+{
 class Guesser
 {
-  private:
-      
-  public:
+
+public:
   uint length;
-    virtual void startNewGame(uint length){};
-    virtual string guess()=0;
-   virtual void learn(string reply){};
+  virtual void startNewGame(uint length){};
+  virtual string guess() = 0;
+  virtual void learn(string reply){};
 };
-}
+} // namespace bullpgia

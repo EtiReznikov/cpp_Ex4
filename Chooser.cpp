@@ -1,5 +1,6 @@
 #include "Chooser.hpp"
 using namespace bullpgia;
+// Ask from the player to choose a number, checks that its a vaild input
 string Chooser::choose(uint lentgh)
 {
 int choice;

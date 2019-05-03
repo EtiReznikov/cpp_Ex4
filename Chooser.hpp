@@ -4,12 +4,11 @@
 #include <iostream>
 using namespace std;
 using std::string;
-namespace bullpgia {
-class Chooser{
-    private:
-   // uint length;
-    public:
-   virtual string choose(uint lentgh)=0;
-  
+namespace bullpgia
+{
+class Chooser
+{
+  public:
+    virtual string choose(uint lentgh) = 0;
 };
-}
+} // namespace bullpgia
