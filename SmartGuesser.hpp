@@ -18,13 +18,13 @@ int numofguess=0;
 
 protected:
  uint  bull, pgia,lastbull, lastpgia;
-  int change, previous, currentchar_firstcheck;
-  int indforpgia;
+  int change, previous; //currentchar_firstcheck;
+  int num_of_check_digits;
  bool dig[10]={false};
  int k;
 
 queue<int> pgiaqueue;
- bool firstcheck;
+ bool first_digit_change;
 string lastanswer;
 
 

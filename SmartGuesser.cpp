@@ -7,16 +7,21 @@ void SmartGuesser::startNewGame(uint length)
 {
     this->length = length;
     this->bull = 0, this->pgia = 0, this->lastbull = length, this->lastpgia = 0;
-    this->currentindex = 0, this->change = 0, this->previous = 0, this->currentchar_firstcheck = 47;
-    this->indforpgia=0;
+    this->currentindex = 0, this->change = 0, this->previous = 0; //this->currentchar_firstcheck = 47;
+    this->num_of_check_digits=0;
     this->lastanswer = "";
     this->k=48;
-    for (int i = 0; i < length; i++)
+  /*  for (int i = 0; i < length; i++)
         lastanswer += '0';
+        */
+    for (int i = 0; i < length/2; i++)
+        lastanswer += '1';
+    for (int i = length/2; i < length; i++)
+        lastanswer += '2';
     pgiaqueue = queue<int>();
     for (int i=0; i<10; i++)
     dig[i]=false;
-    this->firstcheck=true;
+    this->first_digit_change=true;
 }
 
 void SmartGuesser::learn(string reply)
@@ -28,7 +33,8 @@ void SmartGuesser::learn(string reply)
 string SmartGuesser::guess()
 {
     
-    if (indforpgia<10){
+    if (num_of_check_digits<10){
+        
          if (bull > 0)
         {
             for (int i = 0; i < bull; i++)
@@ -46,9 +52,9 @@ string SmartGuesser::guess()
         //    cout<<"k: "<<(char)k<<"\n";
                
             dig[k-48]=true;
-            indforpgia++;
+            num_of_check_digits++;
         //    cout<<"index: "<<indforpgia<<"\n";
-            if (indforpgia <=10){
+            if (num_of_check_digits <=10){
                 for (int i = 0; i < length; i++)
                 {
                     this->lastanswer.at(i) = k;
@@ -57,7 +63,7 @@ string SmartGuesser::guess()
             }
         }
         else
-            indforpgia = 11;
+            num_of_check_digits = 11;
     }
 
 
@@ -88,7 +94,7 @@ string SmartGuesser::guess()
     else
     {
 
-        if (!firstcheck)
+        if (!first_digit_change)
         //cout<<"test\n";
         {
             if (bull > lastbull)
@@ -102,17 +108,18 @@ string SmartGuesser::guess()
                 currentindex++;
                 bull++;
              //   pgiaqueue.push(change);
+            
 
-              
             }
-           if (pgia>0)
+             if (pgia>0)
              pgiaqueue.push(change);
+            
 
         }
 
         if (currentindex < length)
         {
-            firstcheck = false;
+            first_digit_change = false;
             if (!pgiaqueue.empty())
             {
                 change = pgiaqueue.front();
